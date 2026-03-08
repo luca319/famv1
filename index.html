@@ -2024,6 +2024,10 @@ function toggle(row) {
   const card = row.closest('.question-card');
   if (!card.classList.contains('has-answer')) return;
   const wasOpen = card.classList.contains('open');
+  // Close all other open cards
+  document.querySelectorAll('.question-card.open').forEach(c => {
+    if (c !== card) c.classList.remove('open');
+  });
   card.classList.toggle('open');
   if (!wasOpen) {
     setTimeout(() => {
